@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple, accurate Interest Rate Calculator that computes simple and compound interest, letting you compare how your money grows over time." />
+  <meta name="author" content="Interest Rate Calculator Team" />
+  <title>Interest Rate Calculator | Simple &amp; Compound Interest Tool</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <span class="mark" aria-hidden="true">%</span>
+      <span class="wordmark">Ledger&amp;Line</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>Interest Rate Calculator</h1>
+      <p class="lede">
+        Enter a principal, a rate, and a length of time to see exactly how
+        much interest accrues — the simple way, and the compounding way.
+      </p>
+    </section>
+
+    <section class="calculator" aria-labelledby="calc-heading">
+      <h2 id="calc-heading" class="sr-only">Calculator inputs</h2>
+
+      <form id="calculator-form" class="ledger-form" novalidate>
+        <div class="field">
+          <label for="principal">Principal amount</label>
+          <div class="input-affix">
+            <span aria-hidden="true">₱</span>
+            <input type="number" id="principal" name="principal" min="0" step="0.01" placeholder="10000" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="rate">Annual interest rate</label>
+          <div class="input-affix">
+            <input type="number" id="rate" name="rate" min="0" step="0.01" placeholder="5" required />
+            <span aria-hidden="true">%</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="time">Time period (years)</label>
+          <div class="input-affix">
+            <input type="number" id="time" name="time" min="0" step="0.1" placeholder="3" required />
+            <span aria-hidden="true">yrs</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="frequency">Compounding frequency</label>
+          <select id="frequency" name="frequency">
+            <option value="1">Annually</option>
+            <option value="2">Semi-annually</option>
+            <option value="4">Quarterly</option>
+            <option value="12">Monthly</option>
+            <option value="365">Daily</option>
+          </select>
+        </div>
+
+        <button type="submit" class="calculate-btn">Calculate interest</button>
+        <p id="form-error" class="form-error" role="alert" aria-live="polite"></p>
+      </form>
+
+      <div class="results" id="results" aria-live="polite">
+        <div class="result-card simple">
+          <span class="result-label">Simple interest</span>
+          <span class="result-value" id="simple-value">₱0.00</span>
+          <span class="result-total">Total: <span id="simple-total">₱0.00</span></span>
+        </div>
+        <div class="result-card compound">
+          <span class="result-label">Compound interest</span>
+          <span class="result-value" id="compound-value">₱0.00</span>
+          <span class="result-total">Total: <span id="compound-total">₱0.00</span></span>
+        </div>
+      </div>
+
+      <div class="growth-chart-wrap">
+        <h2>Growth over time</h2>
+        <svg id="growth-chart" viewBox="0 0 480 220" role="img" aria-label="Line chart comparing simple and compound growth over time"></svg>
+        <ul class="legend">
+          <li><span class="swatch simple"></span> Simple growth</li>
+          <li><span class="swatch compound"></span> Compound growth</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Built for learning purposes — figures are illustrative, not financial advice.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

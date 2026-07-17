@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Interest Rate Calculator — "Ledger & Line" theme
+   Palette: ink navy #0F1B2D, parchment #F7F3E8, emerald #1E7A54, gold #C9A227
+   ========================================================================== */
+
+:root {
+  --ink: #0f1b2d;
+  --parchment: #f7f3e8;
+  --emerald: #1e7a54;
+  --gold: #c9a227;
+  --muted: #6b7280;
+  --line: #d9d2bf;
+  --danger: #b3432b;
+  --radius: 10px;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 18px 0;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header .mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: bold;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Intro ---------- */
+.intro {
+  padding: 48px 0 24px;
+}
+
+.intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 12px;
+}
+
+.lede {
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+/* ---------- Calculator card ---------- */
+.calculator {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 40px;
+}
+
+.ledger-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.input-affix {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fdfcf8;
+}
+
+.input-affix span {
+  padding: 0 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  background: #efe9d8;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.input-affix input,
+select {
+  border: none;
+  background: transparent;
+  padding: 10px 12px;
+  font-size: 1rem;
+  width: 100%;
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.input-affix input:focus,
+select:focus {
+  outline: 2px solid var(--emerald);
+  outline-offset: -2px;
+}
+
+select {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fdfcf8;
+}
+
+.calculate-btn {
+  grid-column: 1 / -1;
+  background: var(--emerald);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.calculate-btn:hover {
+  background: #175f42;
+}
+
+.calculate-btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.form-error {
+  grid-column: 1 / -1;
+  color: var(--danger);
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  margin: 0;
+}
+
+/* ---------- Results ---------- */
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.result-card {
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-card.simple {
+  background: var(--ink);
+}
+
+.result-card.compound {
+  background: var(--emerald);
+}
+
+.result-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.result-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.result-total {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ---------- Growth chart ---------- */
+.growth-chart-wrap {
+  margin-top: 36px;
+}
+
+.growth-chart-wrap h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+#growth-chart {
+  width: 100%;
+  height: auto;
+  background: #fdfcf8;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.swatch.simple {
+  background: var(--ink);
+}
+
+.swatch.compound {
+  background: var(--emerald);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 24px 0 48px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .ledger-form {
+    grid-template-columns: 1fr;
+  }
+  .results {
+    grid-template-columns: 1fr;
+  }
+}
